@@ -14,6 +14,7 @@ using TicketSystem.Areas.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TicketSystem.Extensions;
 
 namespace TicketSystem
 {
@@ -38,7 +39,8 @@ namespace TicketSystem
                 .AddEntityFrameworkStores<TicketSystemContext>()
                 .AddUserManager<TicketUserManager>()
                 .AddDefaultUI()
-                .AddDefaultTokenProviders(); ;
+                .AddDefaultTokenProviders();
+            services.AddService();
             services.AddControllersWithViews();
         }
 
