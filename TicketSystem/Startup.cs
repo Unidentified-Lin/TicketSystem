@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using TicketSystem.Data;
 using TicketSystemRepo;
 using TicketSystemRepo.Models;
+using TicketSystem.Areas.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,9 +36,9 @@ namespace TicketSystem
 
             services.AddDefaultIdentity<TicketUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<TicketSystemContext>()
-                // .AddUserManager<UserManager<TicketUser>>()
+                .AddUserManager<TicketUserManager>()
                 .AddDefaultUI()
-                .AddDefaultTokenProviders();;
+                .AddDefaultTokenProviders(); ;
             services.AddControllersWithViews();
         }
 

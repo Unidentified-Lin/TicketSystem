@@ -1,27 +1,34 @@
 using System;
-using TicketSystemRepo.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TicketSystemRepo.Models;
 
 namespace TicketSystemRepo
 {
-    public class TicketSystemContext : IdentityDbContext<TicketUser, IdentityRole<Guid>, Guid>
+    public class
+    TicketSystemContext
+    : IdentityDbContext<TicketUser, IdentityRole<Guid>, Guid>
     {
         // public DbSet<Device> Devices { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+
         public DbSet<ActionLog> ActionLogs { get; set; }
 
         public TicketSystemContext()
         {
         }
 
-        public TicketSystemContext(DbContextOptions<TicketSystemContext> options) : base(options)
+        public TicketSystemContext(
+            DbContextOptions<TicketSystemContext> options
+        ) :
+            base(options)
         {
-
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(
+            DbContextOptionsBuilder optionsBuilder
+        )
         {
             base.OnConfiguring(optionsBuilder);
         }
@@ -29,6 +36,7 @@ namespace TicketSystemRepo
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             // modelBuilder.Entity<TicketUser>(b => b.ToTable("Users"));
             // modelBuilder.Entity<IdentityRole<Guid>>(b => b.ToTable("Roles"));
             // modelBuilder.Entity<IdentityUserRole<Guid>>(b => b.ToTable("UserRoles"));
@@ -36,6 +44,16 @@ namespace TicketSystemRepo
             // modelBuilder.Entity<IdentityUserLogin<Guid>>(b => b.ToTable("UserLogins"));
             // modelBuilder.Entity<IdentityUserToken<Guid>>(b => b.ToTable("UserToken"));
             // modelBuilder.Entity<IdentityRoleClaim<Guid>>(b => b.ToTable("RoleClaims"));
+            modelBuilder
+                .Entity<TicketUser>()
+                .HasMany(u => u.CreateTickets)
+                .WithOne(t => t.Creater)
+                .HasForeignKey(t => t.CreaterId);
+            modelBuilder
+                .Entity<TicketUser>()
+                .HasMany(u => u.ResolveTickets)
+                .WithOne(t => t.Resolver)
+                .HasForeignKey(t => t.ResolverId);
         }
     }
 }

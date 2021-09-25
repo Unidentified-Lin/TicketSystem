@@ -5,7 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TicketSystemRepo.Models
 {
-    public class Ticket{
+    public class Ticket
+    {
         [Key]
         public Guid Guid { get; set; }
         [Required]
@@ -17,7 +18,9 @@ namespace TicketSystemRepo.Models
         public bool Resolved { get; set; }
         public int Severity { get; set; }
         public int Priotiry { get; set; }
+        public Guid? CreaterId { get; set; }
         public TicketUser Creater { get; set; }
+        public Guid? ResolverId { get; set; }
         public TicketUser Resolver { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ResolvedDate { get; set; }

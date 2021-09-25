@@ -8,7 +8,8 @@ namespace TicketSystemRepo.Models
     {
         //Custom fields
 
-        public ICollection<Ticket> Tickets { get; set; }
+        public ICollection<Ticket> CreateTickets { get; set; }
+        public ICollection<Ticket> ResolveTickets { get; set; }
         public ICollection<ActionLog> ActionLogs { get; set; }
     }
 }

@@ -11,8 +11,10 @@ namespace TicketSystemRepo.Models
         [Required]
         [Column(TypeName = "nvarchar(32)")]
         public string Action { get; set; }
+        [Column(TypeName = "nvarchar(MAX)")]
         public string Msg { get; set; }
         public DateTime LoggedDate { get; set; }
+        public Guid? UserId { get; set; }
         public TicketUser User { get; set; }
     }
 }
