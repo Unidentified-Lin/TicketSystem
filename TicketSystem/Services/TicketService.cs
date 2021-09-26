@@ -46,5 +46,32 @@ namespace TicketSystem.Services
             var vms = this.GetListToViewModel<TicketViewModel>();
             return vms;
         }
+
+        public async Task<string> Resolve(Guid ticketId, ClaimsPrincipal user)
+        {
+            try
+            {
+                var repo = _unitofWorks.Repository<Ticket>();
+                Ticket theTicket = repo.GetById(ticketId);
+                if (theTicket.Resolved)
+                {
+                    return "Already resolved";
+                }
+                theTicket.ResolvedDate = DateTime.Now;
+                theTicket.Resolved = true;
+                TicketUser theUser = await _manager.GetUserAsync(user);
+                theTicket.ResolverId = theUser.Id;
+
+                repo.Update(theTicket);
+                _unitofWorks.SaveChange();
+
+                return "Resolved";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
     }
 }

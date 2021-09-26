@@ -10,7 +10,9 @@ function genCards(json) {
 		methods: {
 			resolved: function (guid) {
 				console.log(`Resolve guid: ${guid}`);
-				// fetchResourcePost("../Ticket/Resolve", guid, null);
+				fetchResourcePost("../Ticket/Resolve", guid, function (json) {
+					console.log(json);
+				});
 			},
 		},
 	});

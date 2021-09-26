@@ -11,5 +11,7 @@ namespace TicketSystem.Services.Interfaces
     {
         IEnumerable<TicketViewModel> GetTickets();
         Task<string> AddTicket(TicketViewModel vm, ClaimsPrincipal user);
+        Task<string> Resolve(Guid ticketId, ClaimsPrincipal user);
+
     }
 }

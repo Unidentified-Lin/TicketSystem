@@ -19,7 +19,8 @@
                 <p class="card-text">
                     {{ticket.description}}
                 </p>
-                <button class="btn btn-outline-success" v-on:click="resolved(ticket.guid)">Resolve</button>
+                <button v-if="ticket.resolved" class="btn btn-success" disabled>Resolved</button>
+                <button v-else class="btn btn-outline-success" v-on:click="resolved(ticket.guid)">Resolve</button>
             </div>
         </div>
     </div>

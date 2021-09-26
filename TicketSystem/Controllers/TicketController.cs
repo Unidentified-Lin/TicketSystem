@@ -40,5 +40,12 @@ namespace TicketSystem.Controllers
             var tickets = _service.GetTickets();
             return Json(tickets);
         }
+
+        [HttpPost]
+        public JsonResult Resolve([FromBody] Guid ticketId)
+        {
+            var result = _service.Resolve(ticketId, User);
+            return Json(result);
+        }
     }
 }
