@@ -74,7 +74,7 @@ namespace TicketSystemRepo.Data.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Action = table.Column<string>(type: "nvarchar(32)", nullable: false),
-                    Msg = table.Column<string>(type: "nvarchar(MAX)", nullable: true),
+                    Msg = table.Column<string>(type: "nvarchar(300)", nullable: true),
                     LoggedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UserId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
@@ -180,7 +180,7 @@ namespace TicketSystemRepo.Data.Migrations
                 {
                     Guid = table.Column<Guid>(type: "TEXT", nullable: false),
                     Summary = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(300)", nullable: false),
                     Resolved = table.Column<bool>(type: "INTEGER", nullable: false),
                     Severity = table.Column<int>(type: "INTEGER", nullable: false),
                     Priotiry = table.Column<int>(type: "INTEGER", nullable: false),

@@ -36,7 +36,11 @@ namespace TicketSystem
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<TicketUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<TicketUser>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireNonAlphanumeric = false;
+            })
                 .AddEntityFrameworkStores<TicketSystemContext>()
                 .AddUserManager<TicketUserManager>()
                 .AddDefaultUI()

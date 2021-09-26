@@ -13,7 +13,7 @@ namespace TicketSystemRepo.Models
         [Column(TypeName = "nvarchar(100)")]
         public string Summary { get; set; }
         [Required]
-        [Column(TypeName = "nvarchar(MAX)")]
+        [Column(TypeName = "nvarchar(300)")]
         public string Description { get; set; }
         public bool Resolved { get; set; }
         public int Severity { get; set; }

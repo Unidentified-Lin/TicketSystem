@@ -160,7 +160,7 @@ namespace TicketSystemRepo.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Msg")
-                        .HasColumnType("nvarchar(MAX)");
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("TEXT");
@@ -186,7 +186,7 @@ namespace TicketSystemRepo.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(MAX)");
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<int>("Priotiry")
                         .HasColumnType("INTEGER");
