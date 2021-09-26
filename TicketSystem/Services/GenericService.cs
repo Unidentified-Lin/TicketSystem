@@ -54,53 +54,32 @@ namespace TicketSystem.Services
 
         public virtual void CreateViewModelToDatabase<TViewModel>(TViewModel viewModel)
         {
-            try
-            {
-                var entity = _mapper.Map<T>(viewModel);
-                _unitOfWorks.Repository<T>().Insert(entity);
-                _unitOfWorks.SaveChange();
-            }
-            catch (Exception ex)
-            {
-                //log exception
-            }
+            var entity = _mapper.Map<T>(viewModel);
+            _unitOfWorks.Repository<T>().Insert(entity);
+            _unitOfWorks.SaveChange();
         }
 
         public virtual void UpdateViewModelToDatabase<TViewModel>(TViewModel viewModel, object id)
         {
-            try
+            var entity = _unitOfWorks.Repository<T>().GetById(id);
+            if (entity is null)
             {
-                var entity = _unitOfWorks.Repository<T>().GetById(id);
-                if (entity is null)
-                {
-                    return;
-                }
-                _mapper.Map(viewModel, entity);
-                _unitOfWorks.Repository<T>().Update(entity);
-                _unitOfWorks.SaveChange();
+                return;
             }
-            catch (Exception ex)
-            {
-                //log exception
-            }
+            _mapper.Map(viewModel, entity);
+            _unitOfWorks.Repository<T>().Update(entity);
+            _unitOfWorks.SaveChange();
         }
 
         public virtual void Delete(Expression<Func<T, bool>> filter)
         {
-            try
+            var entity = _unitOfWorks.Repository<T>().Entity().Where(filter).FirstOrDefault();
+            if (entity is null)
             {
-                var entity = _unitOfWorks.Repository<T>().Entity().Where(filter).FirstOrDefault();
-                if (entity is null)
-                {
-                    return;
-                }
-                _unitOfWorks.Repository<T>().Delete(entity);
-                _unitOfWorks.SaveChange();
+                return;
             }
-            catch (Exception ex)
-            {
-                //log exception
-            }
+            _unitOfWorks.Repository<T>().Delete(entity);
+            _unitOfWorks.SaveChange();
         }
     }
 }
