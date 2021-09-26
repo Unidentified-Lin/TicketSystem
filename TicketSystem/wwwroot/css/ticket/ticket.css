@@ -1,0 +1,8 @@
+#tickets {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#tickets .card {
+	max-width: 300px;
+}

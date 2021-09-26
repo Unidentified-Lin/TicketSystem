@@ -6,3 +6,27 @@
     <h1 class="display-4">Welcome Ticket</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div id="ticket-area">
+    <div class="m-3 p-3 text-center">
+        <button class="btn btn-primary" id="add-ticket">Add Ticket</button>
+    </div>
+    <div id="tickets">
+        <div class="card m-1" v-for="ticket in tickets">
+            <img src="https://picsum.photos/300/100/?random=1" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">{{ticket.summary}}</h5>
+                <p class="card-text">
+                    {{ticket.description}}
+                </p>
+                <button class="btn btn-outline-success" v-on:click="resolved(ticket.guid)">Resolve</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Css{
+<link rel="stylesheet" href="~/css/ticket/ticket.css">
+}
+@section Scripts{
+<script type="module" src="~/js/ticket/ticket.js"></script>
+}

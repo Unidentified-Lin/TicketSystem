@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TicketSystem.Models;
+using TicketSystem.Models.ViewModels;
 using TicketSystem.Services.Interfaces;
 
 namespace TicketSystem.Controllers
@@ -26,5 +27,18 @@ namespace TicketSystem.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult NewTicket([FromBody] TicketViewModel vm)
+        {
+            var result = _service.AddTicket(vm, User);
+            return Json(result);
+        }
+
+        [HttpGet]
+        public JsonResult GetTickets()
+        {
+            var tickets = _service.GetTickets();
+            return Json(tickets);
+        }
     }
 }
