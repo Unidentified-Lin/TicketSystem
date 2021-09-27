@@ -68,6 +68,8 @@ classDiagram
     IGenericRepository~TEntity~ <|.. GenericRepository~TEntity~ : Realization
 ```
 
+![](https://i.imgur.com/W6eiz8q.png)
+
 ```mermaid
 classDiagram
     class IService~T~{
@@ -108,6 +110,8 @@ classDiagram
     GenericService~T~ <|-- TicketService : Inheritance
     ITicketService~Ticket~ <|.. TicketService : Realization
 ```
+
+![](https://i.imgur.com/U9204QC.png)
 
 ## Task 4
 
