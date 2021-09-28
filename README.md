@@ -12,6 +12,14 @@ Please see pdf document: `TicketSystem Task1 Flow.pdf` and `TicketSystem Task1 S
 
 This project.
 
+Use sqlite database(`app.db`).
+
+Testing accounts and passwords:
+
+- QA: qa@gmail.com `ticketsystem`
+- RD: rd@gmail.com `ticketsystem`
+- Administrator: admin@gmail.com `ticketsystem`
+
 ## Task 3
 
 > Think of yourself as an architect. How will you design this system, please write down the design document at least to include data model, class diagram and UI mock up.
