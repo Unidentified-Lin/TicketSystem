@@ -36,13 +36,13 @@ namespace TicketSystem
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<TicketUser>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = false;
-                options.Password.RequireNonAlphanumeric = false;
-            })
+            services.AddIdentity<TicketUser, IdentityRole<Guid>>(options =>
+             {
+                 options.SignIn.RequireConfirmedAccount = false;
+                 options.Password.RequireNonAlphanumeric = false;
+             })
                 .AddEntityFrameworkStores<TicketSystemContext>()
-                .AddUserManager<TicketUserManager>()
+                // .AddUserManager<TicketUserManager>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
