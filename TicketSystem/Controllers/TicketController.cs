@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TicketSystem.Models;
@@ -11,6 +12,7 @@ using TicketSystem.Services.Interfaces;
 
 namespace TicketSystem.Controllers
 {
+    [Authorize(Policy = "readpolicy")]
     public class TicketController : Controller
     {
         private readonly ILogger<TicketController> _logger;
@@ -28,6 +30,7 @@ namespace TicketSystem.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "writepolicy")]
         public JsonResult NewTicket([FromBody] TicketViewModel vm)
         {
             var result = _service.AddTicket(vm, User);
@@ -42,6 +45,7 @@ namespace TicketSystem.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "resolvepolicy")]
         public JsonResult Resolve([FromBody] Guid ticketId)
         {
             var result = _service.Resolve(ticketId, User);

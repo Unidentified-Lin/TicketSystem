@@ -40,11 +40,19 @@ namespace TicketSystem
              {
                  options.SignIn.RequireConfirmedAccount = false;
                  options.Password.RequireNonAlphanumeric = false;
+                 options.Password.RequireDigit = false;
+                 options.Password.RequireUppercase = false;
              })
                 .AddEntityFrameworkStores<TicketSystemContext>()
                 // .AddUserManager<TicketUserManager>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("readpolicy", builder => builder.RequireRole("QA", "RD"));
+                options.AddPolicy("writepolicy", builder => builder.RequireRole("QA"));
+                options.AddPolicy("resolvepolicy", builder => builder.RequireRole("RD"));
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IUnitOfWorks, UnitOfWorks>();
             services.AddService();
