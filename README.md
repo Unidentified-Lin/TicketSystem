@@ -30,12 +30,12 @@ Please see pdf document: `TicketSystem Task3 Schema.pdf`
 
 ### Endpoints
 
-`GET` `/api/2021-09/ticket.json`
-_Retrieves a list of tickets_
-`GET` `/api/2021-09/ticket/{ticket_id}.json`
-_Retrieves a single ticket by ID_
-`PUP` `/api/2021-09/ticket/{ticket_id}.json`
-_Update an existing ticket_
+- `GET` `/api/2021-09/ticket.json`
+  [_Retrieves a list of tickets_](#retrieves-a-list-of-tickets)
+- `GET` `/api/2021-09/ticket/{ticket_id}.json`
+  [_Retrieves a single ticket by ID_](#retrieves-a-single-ticket-by-id)
+- `PUP` `/api/2021-09/ticket/{ticket_id}.json`
+  [_Update an existing ticket_](#update-an-existing-ticket)
 
 #### The ticket object
 
