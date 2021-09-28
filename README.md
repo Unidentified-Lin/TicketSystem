@@ -27,3 +27,135 @@ Please see pdf document: `TicketSystem Task3 Schema.pdf`
 ## Task 4
 
 > If we are going to open the system for 3rd party to use, can you please design the Web API(Json format) and api document?
+
+### Endpoints
+
+`GET` `/api/2021-09/ticket.json`
+_Retrieves a list of tickets_
+`GET` `/api/2021-09/ticket/{ticket_id}.json`
+_Retrieves a single ticket by ID_
+`PUP` `/api/2021-09/ticket/{ticket_id}.json`
+_Update an existing ticket_
+
+#### The ticket object
+
+```json
+{
+	"id": "F3948628-EC64-4806-850C-4027F2B07AC5",
+	"type": "bug",
+	"summary": "Example",
+	"description": "Description content with message.",
+	"priority": 1,
+	"severity": 2,
+	"resolved": false,
+	"created_at": "2012-08-24T14:01:47-04:00",
+	"resolved_at": "2012-08-24T14:01:47-04:00",
+	"creater_id": "F3948628-EC64-4806-850C-4027F2B07AC5",
+	"resolver_id": "F3948628-EC64-4806-850C-4027F2B07AC5"
+}
+```
+
+#### Properties
+
+| Properties    | Description                                                                       |
+| ------------- | --------------------------------------------------------------------------------- |
+| `id`          | The ID of the ticket.                                                             |
+| `type`        | The ticket type of the ticket.                                                    |
+| `summary`     | The summary of the ticket.                                                        |
+| `description` | The description of the ticket.                                                    |
+| `priority`    | The priority of the ticket. The small number has more priority. Which from 1-5.   |
+| `severity`    | The severity of the ticket. The small number has more severity. Which from 1-5.   |
+| `resolved`    | Whether the ticket is resolved. If true, then the ticket is resolved by resolver. |
+| `created_at`  | The date and time when the ticket was created.                                    |
+| `resolved_at` | The date and time when the ticket was resolved. ticket.                           |
+| `creater_id`  | The user ID who created the ticket.                                               |
+| `resolver_id` | The user ID who resolved the ticket.                                              |
+
+#### Retrieves a list of tickets
+
+Retrieves a list of tickets. Some description here.
+
+Parameters
+`api_version` : required
+`limit` : _<= 250, default: 50_
+
+Response
+
+```json
+HTTP/1.1 200 OK
+{
+	"tickets": [
+		{
+			"id": "F3948628-EC64-4806-850C-4027F2B07AC5",
+			"type": "bug",
+			"summary": "Example",
+			"description": "Description content with message.",
+			"priority": 1,
+			"severity": 2,
+			"resolved": false,
+			"created_at": "2012-08-24T14:01:47-04:00",
+			"resolved_at": "2012-08-24T14:01:47-04:00",
+			"creater_id": "F3948628-EC64-4806-850C-4027F2B07AC5",
+			"resolver_id": "F3948628-EC64-4806-850C-4027F2B07AC5"
+		}
+	]
+}
+```
+
+#### Retrieves a single ticket by ID
+
+Retrieves a single ticket by ID. Some description here.
+
+Parameters
+`api_version` : required
+`ticket_id` : required
+
+Response
+
+```json
+HTTP/1.1 200 OK
+{
+	"ticket": {
+		"id": "F3948628-EC64-4806-850C-4027F2B07AC5",
+		"type": "bug",
+		"summary": "Example",
+		"description": "Description content with message.",
+		"priority": 1,
+		"severity": 2,
+		"resolved": false,
+		"created_at": "2012-08-24T14:01:47-04:00",
+		"resolved_at": "2012-08-24T14:01:47-04:00",
+		"creater_id": "F3948628-EC64-4806-850C-4027F2B07AC5",
+		"resolver_id": "F3948628-EC64-4806-850C-4027F2B07AC5"
+	}
+}
+```
+
+#### Update an existing ticket
+
+Update an existing ticket. Some description here.
+
+Parameters
+`api_version` : required
+`ticket_id` : required
+
+Response
+
+```json
+HTTP/1.1 200 OK
+{
+	"ticket": {
+		"id": "F3948628-EC64-4806-850C-4027F2B07AC5",
+		"type": "bug",
+		"summary": "Example",
+		"description": "Description content with message.",
+		"priority": 1,
+		"severity": 2,
+		"resolved": false,
+		"created_at": "2012-08-24T14:01:47-04:00",
+		"resolved_at": "2012-08-24T14:01:47-04:00",
+		"creater_id": "F3948628-EC64-4806-850C-4027F2B07AC5",
+		"resolver_id": "F3948628-EC64-4806-850C-4027F2B07AC5"
+	}
+}
+```
