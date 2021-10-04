@@ -49,9 +49,9 @@ namespace TicketSystem
                 .AddDefaultTokenProviders();
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("readpolicy", builder => builder.RequireRole("QA", "RD"));
-                options.AddPolicy("writepolicy", builder => builder.RequireRole("QA"));
-                options.AddPolicy("resolvepolicy", builder => builder.RequireRole("RD"));
+                options.AddPolicy("readpolicy", builder => builder.RequireRole("Admin", "QA", "RD"));
+                options.AddPolicy("writepolicy", builder => builder.RequireRole("Admin", "QA"));
+                options.AddPolicy("resolvepolicy", builder => builder.RequireRole("Admin", "RD"));
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IUnitOfWorks, UnitOfWorks>();
