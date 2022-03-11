@@ -1,5 +1,7 @@
 # TicketSystem
 
+An interview project with 3 tasks.
+
 ## Task 1
 
 > Please write down all the use cases either in text or diagram you can think for Phase I and Phase II requirement separately.
